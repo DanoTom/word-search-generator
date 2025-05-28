@@ -5,6 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Word Search Generator</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @keyframes popEffect {
+        0% { transform: scale(1); background-color: yellow; }
+        50% { transform: scale(1.3); background-color: orange; }
+        100% { transform: scale(1); background-color: lightgreen; } /* End on the 'found' color */
+      }
+
+      .animate-pop {
+        animation: popEffect 0.5s forwards; /* 'forwards' keeps the style of the last keyframe */
+      }
+
+      /* Victory Modal Styles */
+      .victory-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000; /* Ensure it's on top */
+      }
+      .victory-modal-content {
+        background-color: white;
+        padding: 30px;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      }
+      .victory-modal-content button {
+        margin-top: 20px; /* Add some space above the button */
+        padding: 8px 16px; /* Tailwind classes like 'px-4 py-2' can also be used in JS if preferred */
+        background-color: #3b82f6; /* Tailwind's blue-500 */
+        color: white;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+      }
+      .victory-modal-content button:hover {
+        background-color: #2563eb; /* Tailwind's blue-600 */
+      }
+      @keyframes fadeIn {
+        from { opacity: 0; transform: scale(0.9); }
+        to { opacity: 1; transform: scale(1); }
+      }
+      .animate-fadeIn {
+        animation: fadeIn 0.3s ease-out forwards;
+      }
+    </style>
 </head>
 <body>
     <div id="root"></div>
